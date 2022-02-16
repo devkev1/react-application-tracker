@@ -4,37 +4,37 @@ import "./Modal.css";
 
 const Modal = ({
   selectedApplication,
-  setSelectedApplication,
+  setApplication,
   setApplications,
   applications,
   closeModal,
 }) => {
   const [inputCompany, setInputCompany] = useState(
-    selectedApplication?.inputCompany
+    selectedApplication?.inputCompany || ""
   );
   const [inputPosition, setInputPosition] = useState(
-    selectedApplication?.inputPosition
+    selectedApplication?.inputPosition || ""
   );
   const [inputApplication, setInputApplication] = useState(
-    selectedApplication?.inputApplication
+    selectedApplication?.inputApplication || ""
   );
   const [inputAddress, setInputAddress] = useState(
-    selectedApplication?.inputAddress
+    selectedApplication?.inputAddress || ""
   );
   const [inputContact, setInputContact] = useState(
-    selectedApplication?.inputContact
+    selectedApplication?.inputContact || ""
   );
   const [inputPhone, setInputPhone] = useState(selectedApplication?.inputPhone);
   const [inputSalary, setInputSalary] = useState(
-    selectedApplication?.inputSalary
+    selectedApplication?.inputSalary || ""
   );
   const [inputApplied, setInputApplied] = useState(
-    selectedApplication?.inputApplied
+    selectedApplication?.inputApplied || ""
   );
   const [inputResponse, setInputResponse] = useState(
-    selectedApplication?.inputResponse
+    selectedApplication?.inputResponse || ""
   );
-  const [inputDate, setInputDate] = useState(selectedApplication?.inputDate);
+  const [inputDate, setInputDate] = useState(selectedApplication?.inputDate || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +58,7 @@ const Modal = ({
       }
     });
     setApplications(tempApplications);
-    setSelectedApplication(null);
+    setApplication(null);
   };
 
   if (!selectedApplication) {

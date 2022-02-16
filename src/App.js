@@ -74,7 +74,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       {applications.map((application) => (
-        <div>
+        <div key={application.inputCompany + application.Position}>
           <button onClick={() => setSelectedApplication(application)}>
             Edit
           </button>
