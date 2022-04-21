@@ -13,6 +13,12 @@ header {
   align-items: center;
 }
 
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 30px;
+}
+
 .form-inputs {
   display: flex;
   flex-wrap: wrap;

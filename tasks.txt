@@ -1,7 +1,15 @@
 Next Steps:
 
 Move Add Application Button to end of last submission.
-Style and Position each submission more to the right and have them stack left to right.
+Position each submission more to the right and have them stack left to right.
+
+
+
+
+
+
+
+
 Make Link an actual working link.
 Allow user to hit enter on their keyboard to submit.
 Add delete to each individual submission.
