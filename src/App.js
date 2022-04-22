@@ -28,6 +28,10 @@ function App() {
     setSelectedApplication(false);
   }
 
+  const handleDelete = (application) => {
+    setApplications(applications.filter(el => el.nextID !== application.nextID))
+  }
+
   return (
     <div className="App">
       <header>
@@ -42,7 +46,6 @@ function App() {
         selectedApplication = {selectedApplication}
       />
     
-
       {applications.map((application) => (
         <div key={application.inputCompany + application.Position}>
           <button onClick={() => {setSelectedApplication(application)
@@ -50,6 +53,9 @@ function App() {
           }}>
             Edit
           </button>
+
+          <button onClick={() => handleDelete(application)}>Delete</button>
+
           <div>Company: {application.inputCompany}</div>
           <div>Position: {application.inputPosition}</div>
           <div>Link: {application.inputApplication}</div>
