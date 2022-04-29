@@ -1,8 +1,5 @@
 Next Steps:
 
-Make Link an actual working link.
-Allow user to hit enter on their keyboard to submit.
-Add a delete all button?
-Add Form Validation - All Fields Must Be Filled!
 Add local storage so everything saves locally.
+Make Edit Button on override the specific field being modified.
 Check everything is mobile responsive.

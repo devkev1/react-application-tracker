@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
+import DeleteConfirmation from "./components/DeleteConfirmation";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [applications, setApplications] = useState([]);
   const [selectedApplication, setSelectedApplication] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showdeleteConfirm, setdeleteConfirm] = useState(false);
 
   const handleAdd = (application) => {
     let tempApplications = Array.from(applications);
@@ -32,6 +34,11 @@ function App() {
     setApplications(applications.filter(el => el.nextID !== application.nextID))
   }
 
+  const deleteAll = () => {
+    setApplications([]);
+    setdeleteConfirm(false);
+  }
+
   return (
     <div className="App">
       <header>
@@ -46,19 +53,20 @@ function App() {
         selectedApplication = {selectedApplication}
       />
     
-      {applications.map((application) => (
-        <div key={application.inputCompany + application.Position}>
+      {applications.map((application, index) => (
+        <div key={index}>
           <button onClick={() => {setSelectedApplication(application)
           setShowModal(true)
           }}>
             Edit
           </button>
 
-          <button onClick={() => handleDelete(application)}>Delete</button>
+
+         <button onClick={() => handleDelete(application)}>Delete</button>
 
           <div>Company: {application.inputCompany}</div>
           <div>Position: {application.inputPosition}</div>
-          <div>Link: {application.inputApplication}</div>
+          <div>Link: <a href={`//${application.inputApplication}`} target="_blank" rel="noreferrer">{application.inputApplication}</a></div> 
           <div>Address: {application.inputAddress}</div>
           <div>Contact: {application.inputContact}</div>
           <div>Phone: {application.inputPhone}</div>
@@ -70,8 +78,10 @@ function App() {
         
       ))}
       <div><button onClick={() => setShowModal(true)}>Add Application</button></div>
-      </div>
+      <div><button onClick={() => setdeleteConfirm(true)}>Delete All</button></div>
       
+      </div>
+      <DeleteConfirmation handleDelete={deleteAll} show={showdeleteConfirm} onToggle={() => setdeleteConfirm(x => !x)}/>
     </div>
   );
 }

@@ -54,9 +54,7 @@ const handleSubmit = (e) => {
     setInputDate("");
   };
 
-  if(show) {
     return (
-      <>
         <Modal isOpen={show} toggle={onToggle} size={"lg"}>
           <ModalHeader
             close={
@@ -161,11 +159,7 @@ const handleSubmit = (e) => {
             </Button>
           </ModalFooter>
         </Modal>
-      </>
     );
-  } else {
-    return null;
-  }
-}
+  } 
 
 export default Form;
