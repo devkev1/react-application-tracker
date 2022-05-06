@@ -3,12 +3,17 @@ import Form from "./components/Form";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { getDefaultApplication } from "./utils";
+import ApplicationDisplay from "./components/ApplicationDisplay";
 
 const LOCAL_STORAGE_KEY = "applications.app";
 
 function App() {
+  const defaultApplication = getDefaultApplication();
+
   const [applications, setApplications] = useState([]);
-  const [selectedApplication, setSelectedApplication] = useState(false);
+  const [selectedApplication, setSelectedApplication] =
+    useState(defaultApplication);
   const [showModal, setShowModal] = useState(false);
   const [showdeleteConfirm, setdeleteConfirm] = useState(false);
 
@@ -17,6 +22,7 @@ function App() {
     tempApplications.push(application);
     setApplications(tempApplications);
     setShowModal(false);
+    setSelectedApplication(defaultApplication);
   };
 
   const handleEdit = (application) => {
@@ -29,7 +35,7 @@ function App() {
     });
     setApplications(tempApplications);
     setShowModal(false);
-    setSelectedApplication(false);
+    setSelectedApplication(defaultApplication);
   };
 
   const handleDelete = (application) => {
@@ -40,6 +46,7 @@ function App() {
 
   const deleteAll = () => {
     setApplications([]);
+    setSelectedApplication(defaultApplication);
     setdeleteConfirm(false);
   };
 
@@ -62,10 +69,12 @@ function App() {
 
       <div className="form-container">
         <Form
-          onSubmit={selectedApplication ? handleEdit : handleAdd}
+          onSubmit={selectedApplication.nextID ? handleEdit : handleAdd}
           show={showModal}
           onToggle={() => setShowModal((x) => !x)}
           selectedApplication={selectedApplication}
+          setSelectedApplication={setSelectedApplication}
+          setApplications={setApplications}
         />
 
         {applications.map((application, index) => (
@@ -81,34 +90,14 @@ function App() {
 
             <button onClick={() => handleDelete(application)}>Delete</button>
 
-            <div className="application-container">
-              <div>Company: {application.inputCompany}</div>
-              <div>Position: {application.inputPosition}</div>
-              <div>
-                Link:{" "}
-                <a
-                  href={`//${application.inputApplication}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {application.inputApplication}
-                </a>
-              </div>
-              <div>Address: {application.inputAddress}</div>
-              <div>Contact: {application.inputContact}</div>
-              <div>Phone: {application.inputPhone}</div>
-              <div>Salary: {application.inputSalary}</div>
-              <div>Date Applied: {application.inputApplied}</div>
-              <div>Response: {application.inputResponse}</div>
-              <div>Interview Date: {application.inputDate}</div>
-            </div>
+            <ApplicationDisplay application={application} />
           </div>
         ))}
         <div>
           <button
             onClick={() => {
               setShowModal(true);
-              setSelectedApplication(false);
+              setSelectedApplication(defaultApplication);
             }}
           >
             Add Application

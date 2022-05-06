@@ -64,10 +64,12 @@ button {
     grid-template-columns: repeat(2, 1fr);
     margin-left: 30px;
   }
+
   .application-container {
     margin-top: -8px;
     margin-bottom: 16px;
   }
+
   button {
     margin-bottom: 22px;
   }
