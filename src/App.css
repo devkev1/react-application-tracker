@@ -54,7 +54,8 @@ button {
 }
 
 .application-container {
-  margin-top: 10px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {
@@ -63,8 +64,11 @@ button {
     grid-template-columns: repeat(2, 1fr);
     margin-left: 30px;
   }
+  .application-container {
+    margin-top: -8px;
+    margin-bottom: 16px;
+  }
   button {
-    margin-top: 10px;
+    margin-bottom: 22px;
   }
 }
-

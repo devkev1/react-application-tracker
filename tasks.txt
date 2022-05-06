@@ -1,4 +1,5 @@
 Next Steps:
-Check everything is mobile responsive.
 Enter key to submit.
 Add a card background to each application.
+Email option?
+Debug edit option.
